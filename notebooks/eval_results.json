@@ -1,0 +1,127 @@
+{
+  "recall_at_k": 1.0,
+  "k": 5,
+  "n_samples": 10,
+  "results": [
+    {
+      "question": "Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?",
+      "correct_pubid": "21645374",
+      "retrieved_pubids": [
+        "21645374",
+        "21645374",
+        "18222909",
+        "18222909",
+        "18222909"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+      "correct_pubid": "16418930",
+      "retrieved_pubids": [
+        "16418930",
+        "16418930",
+        "10966943",
+        "16418930",
+        "27757987"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+      "correct_pubid": "9488747",
+      "retrieved_pubids": [
+        "9488747",
+        "20971618",
+        "25394614",
+        "25394614",
+        "24359102"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through?",
+      "correct_pubid": "17208539",
+      "retrieved_pubids": [
+        "17208539",
+        "17208539",
+        "12142826",
+        "21481154",
+        "14713788"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Can tailored interventions increase mammography use among HMO women?",
+      "correct_pubid": "10808977",
+      "retrieved_pubids": [
+        "10808977",
+        "10808977",
+        "10749257",
+        "26471488",
+        "26471488"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Double balloon enteroscopy: is it efficacious and safe in a community setting?",
+      "correct_pubid": "23831910",
+      "retrieved_pubids": [
+        "25251991",
+        "17593459",
+        "10922093",
+        "10922093",
+        "23831910"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "30-Day and 1-year mortality in emergency general surgery laparotomies: an area of concern and need for improvement?",
+      "correct_pubid": "26037986",
+      "retrieved_pubids": [
+        "26037986",
+        "26037986",
+        "26037986",
+        "12098035",
+        "17704864"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Is adjustment for reporting heterogeneity necessary in sleep disorders?",
+      "correct_pubid": "26852225",
+      "retrieved_pubids": [
+        "26852225",
+        "26852225",
+        "24235894",
+        "20297950",
+        "24235894"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Do mutations causing low HDL-C promote increased carotid intima-media thickness?",
+      "correct_pubid": "17113061",
+      "retrieved_pubids": [
+        "17113061",
+        "17113061",
+        "16319544",
+        "25150098",
+        "16319544"
+      ],
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "A short stay or 23-hour ward in a general and academic children's hospital: are they effective?",
+      "correct_pubid": "10966337",
+      "retrieved_pubids": [
+        "10966337",
+        "10966337",
+        "10966337",
+        "9616411",
+        "7664228"
+      ],
+      "recall_at_k": 1.0
+    }
+  ]
+}
