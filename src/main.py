@@ -16,6 +16,7 @@ class QueryResponse(BaseModel):
     query: str
     answer: str
     sources: list[Source]
+    low_confidence: bool
 
 @app.get("/health")
 def health():
@@ -27,5 +28,6 @@ def query(request: QueryRequest):
     return QueryResponse(
         query=result["query"],
         answer=result["answer"],
-        sources=[Source(**s) for s in result["sources"]]
+        sources=[Source(**s) for s in result["sources"]],
+        low_confidence=result.get("low_confidence", False)
     )
