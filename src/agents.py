@@ -16,6 +16,7 @@ class AgentState(TypedDict):
     validation_status: str  # "sufficient" | "insufficient" | "pending"
     answer: str
     retry_count: int
+    low_confidence: bool
 
 
 # ========== NODES ==========
@@ -36,14 +37,20 @@ def validator_node(state: AgentState) -> AgentState:
 
     context = "\n\n".join([c["text"] for c in state["chunks"]])
 
-    prompt = f"""You are a medical research validator. 
-Given this question and retrieved context, decide if the context contains 
-SUFFICIENT evidence to answer the question accurately.
+    prompt = f"""You are a strict medical research validator.
 
 Question: {state["question"]}
 
-Context:
+Retrieved context:
 {context}
+
+Your task: Determine if the context contains DIRECT and SPECIFIC evidence 
+to answer the question accurately.
+
+Rules:
+- SUFFICIENT: context directly addresses the question with specific findings
+- INSUFFICIENT: context is only tangentially related, or discusses a related 
+  topic without answering the specific question
 
 Reply with ONLY one word: SUFFICIENT or INSUFFICIENT."""
 
@@ -65,7 +72,6 @@ Reply with ONLY one word: SUFFICIENT or INSUFFICIENT."""
 
 
 def synthesizer_node(state: AgentState) -> AgentState:
-    """Generate a cited answer from validated chunks."""
     print(f"[Synthesizer] Generating answer...")
 
     context = "\n\n".join([
@@ -73,9 +79,11 @@ def synthesizer_node(state: AgentState) -> AgentState:
         for c in state["chunks"]
     ])
 
-    prompt = f"""You are a medical research assistant. 
-Answer the question using ONLY the provided context. 
+    prompt = f"""You are a medical research assistant.
+Answer the question using ONLY the provided context.
 Cite PubMed IDs inline.
+If the context does not contain sufficient evidence, 
+start your answer with "INSUFFICIENT_EVIDENCE:" and explain why.
 
 Context:
 {context}
@@ -91,11 +99,22 @@ Answer:"""
     )
 
     answer = response.choices[0].message.content
-    print(f"[Synthesizer] Done.")
+    
+    # Detect low confidence answers
+    low_confidence = any(phrase in answer.lower() for phrase in [
+        "no direct evidence",
+        "cannot be determined", 
+        "insufficient_evidence",
+        "not enough information",
+        "context does not"
+    ])
+    
+    print(f"[Synthesizer] Done. Low confidence: {low_confidence}")
 
     return {
         **state,
-        "answer": answer
+        "answer": answer,
+        "low_confidence": low_confidence
     }
 
 
