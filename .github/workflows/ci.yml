@@ -37,5 +37,7 @@ jobs:
         run: |
           python -m pytest tests/test_api.py -v -k "not test_query_valid and not test_low_confidence_flag"
 
-
+      - name: Build Docker image
+        run: |
+          docker build -t healthcare-rag .
          
