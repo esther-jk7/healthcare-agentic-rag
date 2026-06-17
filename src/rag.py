@@ -71,6 +71,6 @@ if __name__ == "__main__":
     
     print(f"Query: {result['query']}")
     print(f"\nAnswer: {result['answer']}")
-    print(f"\nSources used:")
+    print("\nSources used:")
     for s in result["sources"]:
         print(f"  - PubMed {s['pubid']} ({s['label']})")

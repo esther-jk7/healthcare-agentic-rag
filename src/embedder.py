@@ -1,4 +1,3 @@
-import os
 import chromadb
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
@@ -21,7 +20,7 @@ def build_vector_store(
 
     try:
         chroma_client.delete_collection(collection_name)
-    except:
+    except Exception:
         pass
 
     collection = chroma_client.create_collection(collection_name)

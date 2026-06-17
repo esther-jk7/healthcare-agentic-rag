@@ -1,5 +1,5 @@
 import os
-from typing import TypedDict, Annotated
+from typing import TypedDict
 from langgraph.graph import StateGraph, END
 from groq import Groq
 from dotenv import load_dotenv
@@ -72,7 +72,7 @@ Reply with ONLY one word: SUFFICIENT or INSUFFICIENT."""
 
 
 def synthesizer_node(state: AgentState) -> AgentState:
-    print(f"[Synthesizer] Generating answer...")
+    print("[Synthesizer] Generating answer...")
 
     context = "\n\n".join([
         f"[PubMed {c['pubid']} - {c['label']}]\n{c['text']}"
@@ -168,6 +168,6 @@ if __name__ == "__main__":
 
     print(f"\nQuestion: {result['question']}")
     print(f"\nAnswer: {result['answer']}")
-    print(f"\nSources:")
+    print("\nSources:")
     for c in result["chunks"]:
         print(f"  - PubMed {c['pubid']} ({c['label']})")
