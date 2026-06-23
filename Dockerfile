@@ -13,10 +13,13 @@ WORKDIR /app
 
 COPY --from=builder /root/.local /root/.local
 COPY src/ ./src/
+COPY startup.sh .
 
 ENV PATH=/root/.local/bin:$PATH
 ENV PYTHONPATH=/app
 
-EXPOSE 8000
+RUN chmod +x startup.sh
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "7860"]
+EXPOSE 7860
+
+CMD ["./startup.sh"]
