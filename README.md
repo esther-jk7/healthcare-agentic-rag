@@ -1,3 +1,12 @@
+---
+title: Healthcare Agentic RAG
+emoji: 🏥
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 Good base. Replace the entire file with this proper README:
 
 ```markdown
